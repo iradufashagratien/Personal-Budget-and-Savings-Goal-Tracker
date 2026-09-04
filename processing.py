@@ -24,7 +24,7 @@ def calculate_balance(data):
     total_income = calculate_total_income(data)
     total_expenses =  calculate_total_expenses(data)
 
-    return = total_income - total_expenses
+    return  total_income - total_expenses
 
 def analyze_spending_by_category(data):
     #code to group expenses by category
@@ -88,7 +88,7 @@ def analyze_savings_progress(data):
     if total_income > 0:
         savings_rate = (savings / total_income) * 100
     else: 
-        savings rate = 0
+        savings_rate = 0
 
     return {
             "savings": savings,
