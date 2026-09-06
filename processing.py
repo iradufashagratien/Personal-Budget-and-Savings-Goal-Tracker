@@ -15,7 +15,7 @@ def calculate_total_expenses(data):
 
 
     for transaction in data:
-        if transaction["type"] == "expenses":
+        if transaction["type"] == "expense":
             total_expenses += transaction["amount"]
 
     return total_expenses
@@ -63,7 +63,7 @@ def generate_monthly_summary(data):
    
    # this code determines month we want to summarise 
     for transaction in data:
-        month = transation["date"][:7]   #this indexing takes first 7 characters from form YYYY-MM-DD to show year and month only 
+        month = transaction["date"][:7]   #this indexing takes first 7 characters from form YYYY-MM-DD to show year and month only 
 
         if month not in monthly_summary:
             monthly_summary[month] = {
