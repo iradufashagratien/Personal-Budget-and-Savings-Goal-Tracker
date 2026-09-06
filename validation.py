@@ -24,7 +24,7 @@ def get_valid_type():
         if transaction_type == "expense":
             return transaction_type
 
-        print("Please enter income or expense.")
+        print("Please enter either income or expense.")
 
 
 def get_valid_date():

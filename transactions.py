@@ -2,6 +2,7 @@ from validation import get_valid_amount
 from validation import get_valid_type
 from validation import get_valid_date
 
+#Check whether the transactions and find the next available transaction ID
 
 def get_next_id(transactions):
     if len(transactions) == 0:
@@ -15,17 +16,18 @@ def get_next_id(transactions):
 
     return highest_id + 1
 
+#Add new transac to the list 
 
 def add_transaction(transactions):
-    print("\n--- Add Transaction ---")
+    print("\n=== Add Transaction ===")
 
     transaction_type = get_valid_type()
 
-    description = input("Enter description: ")
+    description = input("Enter the description: ")
 
     while description == "":
         print("Description cannot be empty.")
-        description = input("Enter description: ")
+        description = input("Enter the description: ")
 
     amount = get_valid_amount()
 
@@ -48,14 +50,14 @@ def add_transaction(transactions):
 
     transactions.append(transaction)
 
-    print("Transaction added successfully.")
+    print("Transaction added successfully!.")
 
-
+#Viewing all transactions 
 def view_transactions(transactions):
-    print("\n--- All Transactions ---")
+    print("\n=== All Transactions ===")
 
     if len(transactions) == 0:
-        print("No transactions found.")
+        print("No transactions found!.")
         return
 
     for transaction in transactions:
@@ -68,9 +70,9 @@ def view_transactions(transactions):
             "|", transaction["date"]
         )
 
-
+#Updating existing transaction
 def update_transaction(transactions):
-    print("\n--- Update Transaction ---")
+    print("\n=== Update Transaction ===")
 
     if len(transactions) == 0:
         print("No transactions to update.")
@@ -79,7 +81,7 @@ def update_transaction(transactions):
     view_transactions(transactions)
 
     try:
-        transaction_id = int(input("Enter transaction ID to update: "))
+        transaction_id = int(input("Enter the transaction ID to update: "))
     except ValueError:
         print("Invalid ID.")
         return
@@ -122,14 +124,14 @@ def update_transaction(transactions):
             if date != "":
                 transaction["date"] = date
 
-            print("Transaction updated successfully.")
+            print("Transaction updated successfully!.")
             return
 
-    print("Transaction not found.")
+    print("Transaction not found. Please enter the valid transaction ID")
 
 
 def delete_transaction(transactions):
-    print("\n--- Delete Transaction ---")
+    print("\n=== Delete Transaction ===")
 
     if len(transactions) == 0:
         print("No transactions to delete.")
@@ -158,11 +160,11 @@ def delete_transaction(transactions):
 
             return
 
-    print("Transaction not found.")
+    print("Transaction not found. Please enter the valid transaction ID to delete")
 
 
 def search_transactions(transactions):
-    print("\n--- Search Transactions ---")
+    print("\n=== Search The Transactions ")
 
     keyword = input("Enter description to search: ").lower()
 
@@ -179,16 +181,23 @@ def search_transactions(transactions):
             found = True
 
     if not found:
-        print("No matching transactions found.")
+        print("No matching transactions found. Please review the keyword")
 
+#Filter transactions and display data accordingly
 
 def filter_transactions(transactions):
-    print("\n--- Filter Transactions ---")
+    print("\n=== Filter Transactions ===")
+
+    if len(transactions) == 0:
+        print("No transactions found.")
+        return
 
     print("1. Filter by type")
     print("2. Filter by category")
 
     choice = input("Choose option: ")
+
+    found = False
 
     if choice == "1":
 
@@ -196,39 +205,39 @@ def filter_transactions(transactions):
             "Enter type (income/expense): "
         ).lower()
 
-        found = False
-
         for transaction in transactions:
-            if transaction["type"] == transaction_type:
+            if transaction["type"].lower() == transaction_type:
                 print(
                     "ID:", transaction["id"],
+                    "|", transaction["type"],
                     "|", transaction["description"],
                     "| Rs", transaction["amount"],
-                    "|", transaction["category"]
+                    "|", transaction["category"],
+                    "|", transaction["date"]
                 )
                 found = True
-
-        if not found:
-            print("No transactions found.")
 
     elif choice == "2":
 
         category = input("Enter category: ").lower()
 
-        found = False
-
         for transaction in transactions:
             if transaction["category"].lower() == category:
                 print(
                     "ID:", transaction["id"],
+                    "|", transaction["type"],
                     "|", transaction["description"],
                     "| Rs", transaction["amount"],
-                    "|", transaction["type"]
+                    "|", transaction["category"],
+                    "|", transaction["date"]
                 )
                 found = True
 
-        if not found:
-            print("No transactions found.")
-
     else:
         print("Invalid choice.")
+        return
+
+    if not found:
+        print("No matching transactions found.")
+
+#End of the transactions part        

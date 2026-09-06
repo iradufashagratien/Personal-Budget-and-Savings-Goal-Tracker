@@ -2,7 +2,7 @@ import json
 
 FILE_NAME = "data/budget_data.json"
 
-
+#Brings data from JSON file to Python to be used 
 def load_data():
     try:
         with open(FILE_NAME, "r") as file:
@@ -24,7 +24,7 @@ def load_data():
             "savings_goals": []
         }
 
-
+#Writing data to JSON file
 def save_data(data):
     with open(FILE_NAME, "w") as file:
         json.dump(data, file, indent=4)
