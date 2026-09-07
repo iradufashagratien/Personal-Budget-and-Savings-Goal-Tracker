@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 #this file contains functions that mostly calculate and analyse data
+
 def calculate_total_income(data):
     total_income = 0
   
