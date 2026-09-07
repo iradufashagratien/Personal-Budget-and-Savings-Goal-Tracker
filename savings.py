@@ -2,8 +2,22 @@ goals = []
 
 
 def add_goal():
-    name = input("Enter goal name: ")
-    target = float(input("Enter target amount: "))
+    name = input("Enter goal name: ").strip()
+
+    if name == "":
+        print("Goal name cannot be empty.")
+        return
+
+    try:
+        target = float(input("Enter target amount: "))
+
+        if target <= 0:
+            print("Target amount must be greater than 0.")
+            return
+
+    except ValueError:
+        print("Please enter a valid amount.")
+        return
 
     goal = {
         "id": len(goals) + 1,
@@ -30,6 +44,50 @@ def view_goals():
         progress = (goal["saved"] / goal["target"]) * 100
         print("Progress:", round(progress, 2), "%")
 
+        if goal["saved"] >= goal["target"]:
+            print("Status: Completed")
+        else:
+            print("Status: Incomplete")
+
+
+def update_goal():
+    view_goals()
+
+    if len(goals) == 0:
+        return
+
+    try:
+        goal_id = int(input("Which goal do you want to update? "))
+
+        if goal_id < 1 or goal_id > len(goals):
+            print("Invalid goal ID.")
+            return
+
+    except ValueError:
+        print("Please enter a valid goal ID.")
+        return
+
+    name = input("Enter new goal name: ").strip()
+
+    if name == "":
+        print("Goal name cannot be empty.")
+        return
+
+    try:
+        target = float(input("Enter new target amount: "))
+
+        if target <= 0:
+            print("Target amount must be greater than 0.")
+            return
+
+    except ValueError:
+        print("Please enter a valid amount.")
+        return
+
+    goals[goal_id - 1]["name"] = name
+    goals[goal_id - 1]["target"] = target
+
+    print("Savings goal updated!")
 
 
 def add_money():
@@ -38,10 +96,24 @@ def add_money():
     if len(goals) == 0:
         return
 
-    number = int(input("Which goal do you want to add money to? ")) - 1
-    amount = float(input("How much money do you want to add? "))
+    try:
+        number = int(input("Which goal do you want to add money to? "))
 
-    goals[number]["saved"] += amount
+        if number < 1 or number > len(goals):
+            print("Invalid goal ID.")
+            return
+
+        amount = float(input("How much money do you want to add? "))
+
+        if amount <= 0:
+            print("Amount must be greater than 0.")
+            return
+
+    except ValueError:
+        print("Please enter a valid number.")
+        return
+
+    goals[number - 1]["saved"] += amount
 
     print("Money added!")
 
@@ -52,40 +124,18 @@ def delete_goal():
     if len(goals) == 0:
         return
 
-    number = int(input("Which goal do you want to delete? ")) - 1
+    try:
+        number = int(input("Which goal do you want to delete? "))
 
-    goals.pop(number)
+        if number < 1 or number > len(goals):
+            print("Invalid goal ID.")
+            return
+
+    except ValueError:
+        print("Please enter a valid goal ID.")
+        return
+
+    goals.pop(number - 1)
 
     print("Goal deleted!")
 
-
-if __name__ == "__main__":
-
-    while True:
-        print("\n===== SAVINGS GOALS =====")
-        print("1. Add goal")
-        print("2. View goals")
-        print("3. Add money")
-        print("4. Delete goal")
-        print("5. Exit")
-
-        choice = input("Choose an option: ")
-
-        if choice == "1":
-            add_goal()
-
-        elif choice == "2":
-            view_goals()
-
-        elif choice == "3":
-            add_money()
-
-        elif choice == "4":
-            delete_goal()
-
-        elif choice == "5":
-            print("Goodbye!")
-            break
-
-        else:
-            print("Invalid choice.")

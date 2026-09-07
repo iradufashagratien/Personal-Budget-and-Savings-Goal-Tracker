@@ -21,6 +21,8 @@ def get_next_id(transactions):
 def add_transaction(transactions):
     print("\n=== Add Transaction ===")
 
+    print()
+    
     transaction_type = get_valid_type()
 
     description = input("Enter the description: ")
@@ -56,6 +58,8 @@ def add_transaction(transactions):
 def view_transactions(transactions):
     print("\n=== All Transactions ===")
 
+    print()
+
     if len(transactions) == 0:
         print("No transactions found!.")
         return
@@ -73,6 +77,8 @@ def view_transactions(transactions):
 #Updating existing transaction
 def update_transaction(transactions):
     print("\n=== Update Transaction ===")
+
+    print()
 
     if len(transactions) == 0:
         print("No transactions to update.")
@@ -133,11 +139,15 @@ def update_transaction(transactions):
 def delete_transaction(transactions):
     print("\n=== Delete Transaction ===")
 
+    print()
+
     if len(transactions) == 0:
         print("No transactions to delete.")
         return
 
     view_transactions(transactions)
+
+    print()
 
     try:
         transaction_id = int(input("Enter transaction ID to delete: "))
@@ -162,9 +172,12 @@ def delete_transaction(transactions):
 
     print("Transaction not found. Please enter the valid transaction ID to delete")
 
+    print()
 
 def search_transactions(transactions):
-    print("\n=== Search The Transactions ")
+    print("\n=== Search The Transactions ===") 
+
+    print()
 
     keyword = input("Enter description to search: ").lower()
 
@@ -181,12 +194,14 @@ def search_transactions(transactions):
             found = True
 
     if not found:
-        print("No matching transactions found. Please review the keyword")
+        print("No matching transaction found!. Please review the keyword")
 
 #Filter transactions and display data accordingly
 
 def filter_transactions(transactions):
     print("\n=== Filter Transactions ===")
+
+    print()
 
     if len(transactions) == 0:
         print("No transactions found.")
