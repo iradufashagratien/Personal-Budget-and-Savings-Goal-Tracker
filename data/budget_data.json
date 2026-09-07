@@ -31,6 +31,14 @@
             "amount": 2000,
             "category": "Work",
             "date": "2026-09-03"
+        },
+        {
+            "id": 5,
+            "type": "income",
+            "description": "Paid-job ",
+            "amount": 10000.0,
+            "category": "Work",
+            "date": "2026-04-02"
         }
     ],
     "savings_goals": [
