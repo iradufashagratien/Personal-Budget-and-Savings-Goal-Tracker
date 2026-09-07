@@ -1,4 +1,4 @@
-goals = []
+saving_goals = []
 
 
 def add_goal():
@@ -20,22 +20,22 @@ def add_goal():
         return
 
     goal = {
-        "id": len(goals) + 1,
+        "id": len(saving_goals) + 1,
         "name": name,
         "target": target,
         "saved": 0
     }
 
-    goals.append(goal)
+    saving_goals.append(goal)
     print("Savings goal added!")
 
 
 def view_goals():
-    if len(goals) == 0:
+    if len(saving_goals) == 0:
         print("No savings goals yet.")
         return
 
-    for goal in goals:
+    for goal in saving_goals:
         print("\nID:", goal["id"])
         print("Goal:", goal["name"])
         print("Target:", goal["target"])
@@ -53,13 +53,13 @@ def view_goals():
 def update_goal():
     view_goals()
 
-    if len(goals) == 0:
+    if len(saving_goals) == 0:
         return
 
     try:
         goal_id = int(input("Which goal do you want to update? "))
 
-        if goal_id < 1 or goal_id > len(goals):
+        if goal_id < 1 or goal_id > len(saving_goals):
             print("Invalid goal ID.")
             return
 
@@ -84,8 +84,8 @@ def update_goal():
         print("Please enter a valid amount.")
         return
 
-    goals[goal_id - 1]["name"] = name
-    goals[goal_id - 1]["target"] = target
+    saving_goals[goal_id - 1]["name"] = name
+    saving_goals[goal_id - 1]["target"] = target
 
     print("Savings goal updated!")
 
@@ -93,13 +93,13 @@ def update_goal():
 def add_money():
     view_goals()
 
-    if len(goals) == 0:
+    if len(saving_goals) == 0:
         return
 
     try:
         number = int(input("Which goal do you want to add money to? "))
 
-        if number < 1 or number > len(goals):
+        if number < 1 or number > len(saving_goals):
             print("Invalid goal ID.")
             return
 
@@ -113,7 +113,7 @@ def add_money():
         print("Please enter a valid number.")
         return
 
-    goals[number - 1]["saved"] += amount
+    saving_goals[number - 1]["saved"] += amount
 
     print("Money added!")
 
@@ -121,13 +121,13 @@ def add_money():
 def delete_goal():
     view_goals()
 
-    if len(goals) == 0:
+    if len(saving_goals) == 0:
         return
 
     try:
         number = int(input("Which goal do you want to delete? "))
 
-        if number < 1 or number > len(goals):
+        if number < 1 or number > len(saving_goals):
             print("Invalid goal ID.")
             return
 
@@ -135,7 +135,7 @@ def delete_goal():
         print("Please enter a valid goal ID.")
         return
 
-    goals.pop(number - 1)
+    saving_goals.pop(number - 1)
 
     print("Goal deleted!")
 
