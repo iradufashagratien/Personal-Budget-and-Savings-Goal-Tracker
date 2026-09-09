@@ -1,7 +1,7 @@
 def get_valid_amount():
     while True:
         try:
-            amount = float(input("Enter amount: "))
+            amount = float(input("Enter amount in MUR: "))
 
             if amount <= 0:
                 print("Amount must be greater than 0.")
