@@ -97,10 +97,8 @@ def update_transaction(transactions):
 
             print("Leave the description empty to keep the old value.")
 
-            description = input(
-                "New description: "
-            )
-
+            description = input(   "New description: " )
+              
             if description != "":
                 transaction["description"] = description
 

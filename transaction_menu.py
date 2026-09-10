@@ -24,7 +24,7 @@ def main():
         print("6. Filter Transactions")
         print("7. Save and Exit")
         print()
-        print("=============================================")
+        print("============================================")
         print()    
         choice = input("Choose an option: ")
 
