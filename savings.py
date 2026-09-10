@@ -1,7 +1,6 @@
-saving_goals = []
+def add_goal(data):
+    saving_goals = data["savings_goals"]
 
-
-def add_goal():
     name = input("Enter goal name: ").strip()
 
     if name == "":
@@ -30,7 +29,9 @@ def add_goal():
     print("Savings goal added!")
 
 
-def view_goals():
+def view_goals(data):
+    saving_goals = data["savings_goals"]
+
     if len(saving_goals) == 0:
         print("No savings goals yet.")
         return
@@ -50,8 +51,10 @@ def view_goals():
             print("Status: Incomplete")
 
 
-def update_goal():
-    view_goals()
+def update_goal(data):
+    saving_goals = data["savings_goals"]
+
+    view_goals(data)
 
     if len(saving_goals) == 0:
         return
@@ -90,8 +93,10 @@ def update_goal():
     print("Savings goal updated!")
 
 
-def add_money():
-    view_goals()
+def add_money(data):
+    saving_goals = data["savings_goals"]
+
+    view_goals(data)
 
     if len(saving_goals) == 0:
         return
@@ -118,8 +123,10 @@ def add_money():
     print("Money added!")
 
 
-def delete_goal():
-    view_goals()
+def delete_goal(data):
+    saving_goals = data["savings_goals"]
+
+    view_goals(data)
 
     if len(saving_goals) == 0:
         return
@@ -138,4 +145,3 @@ def delete_goal():
     saving_goals.pop(number - 1)
 
     print("Goal deleted!")
-
