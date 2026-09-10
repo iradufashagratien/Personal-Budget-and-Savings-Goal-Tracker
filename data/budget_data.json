@@ -1,0 +1,58 @@
+{
+    "transactions": [
+        {
+            "id": 1,
+            "type": "income",
+            "description": "Part-time job",
+            "amount": 5000,
+            "category": "Work",
+            "date": "2026-09-01"
+        },
+        {
+            "id": 2,
+            "type": "expense",
+            "description": "Lunch",
+            "amount": 150,
+            "category": "Food",
+            "date": "2026-09-02"
+        },
+        {
+            "id": 3,
+            "type": "expense",
+            "description": "Bus transport",
+            "amount": 50,
+            "category": "Transport",
+            "date": "2026-09-03"
+        },
+        {
+            "id": 4,
+            "type": "income",
+            "description": "Freelance work",
+            "amount": 2000,
+            "category": "Work",
+            "date": "2026-09-03"
+        },
+        {
+            "id": 5,
+            "type": "income",
+            "description": "Paid-job ",
+            "amount": 10000.0,
+            "category": "Work",
+            "date": "2026-04-02"
+        }
+    ],
+    "savings_goals": [
+        {
+            "id": 1,
+            "name": "New Laptop",
+            "target": 30000,
+            "saved": 5000
+        },
+        {
+            "id": 2,
+            "name": "Emergency Fund",
+            "target": 20000,
+            "saved": 8000
+        }
+    ]
+}
