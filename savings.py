@@ -32,23 +32,30 @@ def add_goal(data):
 def view_goals(data):
     saving_goals = data["savings_goals"]
 
+    print("\n=== All Savings Goals ===")
+
+    print()
+
     if len(saving_goals) == 0:
         print("No savings goals yet.")
         return
 
     for goal in saving_goals:
-        print("\nID:", goal["id"])
-        print("Goal:", goal["name"])
-        print("Target:", goal["target"])
-        print("Saved:", goal["saved"])
-
         progress = (goal["saved"] / goal["target"]) * 100
-        print("Progress:", round(progress, 2), "%")
 
         if goal["saved"] >= goal["target"]:
-            print("Status: Completed")
+            status = "Completed"
         else:
-            print("Status: Incomplete")
+            status = "Incomplete"
+
+        print(
+            "ID:", goal["id"],
+            "|", goal["name"],
+            "| Target: Rs", goal["target"],
+            "| Saved: Rs", goal["saved"],
+            "| Progress:", round(progress, 2), "%",
+            "|", status
+        )
 
 
 def update_goal(data):

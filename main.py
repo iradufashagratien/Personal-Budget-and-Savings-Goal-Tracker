@@ -22,7 +22,7 @@ def main():
             transaction_menu.transaction_menu(data["transactions"])
 
         elif choice == "2":
-            savings_menu.savings_menu()
+            savings_menu.savings_menu(data)
 
         elif choice == "3":
             processing_menu.processing_menu(data["transactions"])
