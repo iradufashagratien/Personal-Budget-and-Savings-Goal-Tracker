@@ -4,12 +4,16 @@ import savings
 def savings_menu(data):
     while True:
         print("\n===== SAVINGS GOALS =====")
+        print()
         print("1. Add goal")
         print("2. View goals")
         print("3. Update goal")
         print("4. Add money")
         print("5. Delete goal")
         print("6. Exit")
+        print()
+        print("=============================================")
+        print()
 
         choice = input("Choose an option: ")
 

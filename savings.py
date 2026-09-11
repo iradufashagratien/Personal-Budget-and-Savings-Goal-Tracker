@@ -67,7 +67,7 @@ def update_goal(data):
         return
 
     try:
-        goal_id = int(input("Which goal do you want to update? "))
+        goal_id = int(input("Which goal do you want to update: "))
 
         if goal_id < 1 or goal_id > len(saving_goals):
             print("Invalid goal ID.")
@@ -109,13 +109,13 @@ def add_money(data):
         return
 
     try:
-        number = int(input("Which goal do you want to add money to? "))
+        number = int(input("Which goal do you want to add money to: "))
 
         if number < 1 or number > len(saving_goals):
             print("Invalid goal ID.")
             return
 
-        amount = float(input("How much money do you want to add? "))
+        amount = float(input("How much money do you want to add: "))
 
         if amount <= 0:
             print("Amount must be greater than 0.")
@@ -139,7 +139,7 @@ def delete_goal(data):
         return
 
     try:
-        number = int(input("Which goal do you want to delete? "))
+        number = int(input("Which goal do you want to delete: "))
 
         if number < 1 or number > len(saving_goals):
             print("Invalid goal ID.")
