@@ -1,7 +1,7 @@
-def get_valid_amount():
+def get_valid_amount(prompt="Enter amount in MUR: "):
     while True:
         try:
-            amount = float(input("Enter amount in MUR: "))
+            amount = float(input(prompt))
 
             if amount <= 0:
                 print("Amount must be greater than 0.")
@@ -35,3 +35,27 @@ def get_valid_date():
             return date
 
         print("Please use YYYY-MM-DD format.")
+
+
+def get_valid_name(prompt, empty_message="Name cannot be empty."):
+    while True:
+        name = input(prompt).strip()
+
+        if name == "":
+            print(empty_message)
+        else:
+            return name
+
+
+def get_valid_goal_id(saving_goals, prompt):
+    while True:
+        try:
+            goal_id = int(input(prompt))
+
+            if goal_id < 1 or goal_id > len(saving_goals):
+                print("Invalid goal ID.")
+            else:
+                return goal_id
+
+        except ValueError:
+            print("Please enter a valid goal ID.")

@@ -86,9 +86,9 @@ The system should also handle cases where:
 
 ## 4. GCGO Connection
 
-The project supports responsible financial behaviour by helping users understand and manage their spending.
+This project supports the **Education** GCGO theme by promoting financial literacy — the practical knowledge and skills needed to manage money responsibly.
 
-The application encourages users to:
+The application acts as an educational tool that teaches users to:
 
 * Track where their money is going.
 * Identify spending patterns.
@@ -96,7 +96,7 @@ The application encourages users to:
 * Set savings targets.
 * Monitor progress towards financial goals.
 
-This connects the project to responsible consumption and financial wellbeing.
+By turning abstract financial concepts (budgeting, saving, and spending analysis) into hands-on practice, the project helps users build money-management skills that support lifelong financial wellbeing.
 
 ## 5. Scope of the Project
 
