@@ -1,23 +1,16 @@
+from validation import get_valid_amount, get_valid_name, get_valid_goal_id
+
+# =========== Add Goals ===============
+
 def add_goal(data):
     saving_goals = data["savings_goals"]
 
-    name = input("Enter goal name: ").strip()
+    # Get a valid goal name and target using shared validation
+    name = get_valid_name("Enter goal name: ", "Goal name cannot be empty.")
 
-    if name == "":
-        print("Goal name cannot be empty.")
-        return
+    target = get_valid_amount("Enter target amount: ")
 
-    try:
-        target = float(input("Enter target amount: "))
-
-        if target <= 0:
-            print("Target amount must be greater than 0.")
-            return
-
-    except ValueError:
-        print("Please enter a valid amount.")
-        return
-
+    # Create goal dictionary block
     goal = {
         "id": len(saving_goals) + 1,
         "name": name,
@@ -26,9 +19,12 @@ def add_goal(data):
     }
 
     saving_goals.append(goal)
+    print()
+    
     print("Savings goal added!")
 
 
+# ============ View Goals ==============
 def view_goals(data):
     saving_goals = data["savings_goals"]
 
@@ -36,10 +32,12 @@ def view_goals(data):
 
     print()
 
+    # Check if there are existing goals in database
     if len(saving_goals) == 0:
         print("No savings goals yet.")
         return
 
+    # Display goals one after the other
     for goal in saving_goals:
         progress = (goal["saved"] / goal["target"]) * 100
 
@@ -57,98 +55,67 @@ def view_goals(data):
             "|", status
         )
 
+# ========== Update Goal ==============
 
 def update_goal(data):
     saving_goals = data["savings_goals"]
 
+    # Display existing goals
     view_goals(data)
 
+    # Null check
     if len(saving_goals) == 0:
         return
 
-    try:
-        goal_id = int(input("Which goal do you want to update: "))
+    # Get valid goal ID, name and target using shared validation
+    goal_id = get_valid_goal_id(saving_goals, "Which goal do you want to update (Enter Id): ")
 
-        if goal_id < 1 or goal_id > len(saving_goals):
-            print("Invalid goal ID.")
-            return
+    name = get_valid_name("Enter new goal name: ", "Goal name cannot be empty.")
 
-    except ValueError:
-        print("Please enter a valid goal ID.")
-        return
+    target = get_valid_amount("Enter new target amount: ")
 
-    name = input("Enter new goal name: ").strip()
-
-    if name == "":
-        print("Goal name cannot be empty.")
-        return
-
-    try:
-        target = float(input("Enter new target amount: "))
-
-        if target <= 0:
-            print("Target amount must be greater than 0.")
-            return
-
-    except ValueError:
-        print("Please enter a valid amount.")
-        return
-
+    # Assignment of new values to goal dictionary block
     saving_goals[goal_id - 1]["name"] = name
     saving_goals[goal_id - 1]["target"] = target
 
     print("Savings goal updated!")
 
 
+# ============ Add Money ==============
 def add_money(data):
     saving_goals = data["savings_goals"]
 
     view_goals(data)
 
+    # Null check
     if len(saving_goals) == 0:
         return
 
-    try:
-        number = int(input("Which goal do you want to add money to: "))
+    # Get valid goal ID and amount using shared validation
+    number = get_valid_goal_id(saving_goals, "Which goal do you want to add money to: ")
 
-        if number < 1 or number > len(saving_goals):
-            print("Invalid goal ID.")
-            return
+    amount = get_valid_amount("How much money do you want to add: ")
 
-        amount = float(input("How much money do you want to add: "))
-
-        if amount <= 0:
-            print("Amount must be greater than 0.")
-            return
-
-    except ValueError:
-        print("Please enter a valid number.")
-        return
-
+    # Update amount on goal dictionary block
     saving_goals[number - 1]["saved"] += amount
 
     print("Money added!")
 
 
+# =========== Delete Goal =============
 def delete_goal(data):
     saving_goals = data["savings_goals"]
 
     view_goals(data)
 
+    # Series of checks
     if len(saving_goals) == 0:
         return
 
-    try:
-        number = int(input("Which goal do you want to delete: "))
+    # Get valid goal ID using shared validation
+    number = get_valid_goal_id(saving_goals, "Which goal do you want to delete: ")
 
-        if number < 1 or number > len(saving_goals):
-            print("Invalid goal ID.")
-            return
-
-    except ValueError:
-        print("Please enter a valid goal ID.")
-        return
-
+    # Delete goal from list
     saving_goals.pop(number - 1)
 
     print("Goal deleted!")

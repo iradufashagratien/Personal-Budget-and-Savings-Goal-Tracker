@@ -1,6 +1,5 @@
 import savings
 
-
 def savings_menu(data):
     while True:
         print("\n===== SAVINGS GOALS =====")
