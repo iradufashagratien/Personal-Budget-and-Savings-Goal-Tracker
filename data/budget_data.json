@@ -53,6 +53,12 @@
             "name": "Emergency Fund",
             "target": 20000,
             "saved": 8000
+        },
+        {
+            "id": 3,
+            "name": "hello",
+            "target": 200.0,
+            "saved": 0
         }
     ]
 }

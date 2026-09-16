@@ -25,7 +25,8 @@ def main():
         elif choice == "2":
             savings_menu.savings_menu(data)
 
-
+        elif choice == "3":
+            processing_menu.processing_menu(data["transactions"])
 
         elif choice == "4":
             save_data(data)
