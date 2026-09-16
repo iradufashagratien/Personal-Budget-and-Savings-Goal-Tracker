@@ -105,4 +105,17 @@ def generate_report(data):
     monthly = generate_monthly_summary(data)
     savings = analyze_savings_progress(data)
 
+    print("\n========== FULL FINANCIAL REPORT ==========")
+    print("")
+    print("Total Income:", income)
+    print("Total Expenses:", expenses)
+    print("Balance:", balance)
+    print("Spending by Category:", categories)
+    print("Highest Spending Category:", highest)
+    print("Monthly Summary:", monthly)
+    print("Savings Progress:", savings)
+    print("")
+
+    print("===========================================")
+
     # this generate_report function will call all functions to display report on the screen 
