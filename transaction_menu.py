@@ -9,7 +9,7 @@ from transactions import (
 )
 
 
-def main():
+def transaction_menu(transactions):
     data = load_data()
     transactions = data["transactions"]
 
@@ -50,4 +50,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    transaction_menu()

@@ -28,5 +28,5 @@ def load_data():
 def save_data(data):
     with open(FILE_NAME, "w") as file:
         json.dump(data, file, indent=4)
-
+    print()
     print("Data saved successfully.")
