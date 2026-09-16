@@ -10,6 +10,7 @@ def main():
 
     while True:
         print("\n===== PERSONAL BUDGET & SAVINGS TRACKER =====")
+        print()
         print("1. Income & Expenses")
         print("2. Savings Goals")
         print("3. Financial Analysis")
@@ -24,11 +25,11 @@ def main():
         elif choice == "2":
             savings_menu.savings_menu(data)
 
-        elif choice == "3":
-            processing_menu.processing_menu(data["transactions"])
+
 
         elif choice == "4":
             save_data(data)
+            print()
             print("Goodbye!")
             break
 

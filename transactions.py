@@ -1,8 +1,8 @@
-from validation import get_valid_amount
-from validation import get_valid_type
-from validation import get_valid_date
 
-#Check whether the transactions and find the next available transaction ID
+#Importing the validation functions from the validation.py file to be used in this file for validating user inputs related to transactions.
+from validation import get_valid_amount, get_valid_type, get_valid_date
+
+#Check whether the first transaction's index is zero and find the next available transaction ID
 
 def get_next_id(transactions):
     if len(transactions) == 0:
@@ -16,7 +16,7 @@ def get_next_id(transactions):
 
     return highest_id + 1
 
-#Add new transac to the list 
+#Add new transaction to the list 
 
 def add_transaction(transactions):
     print("\n=== Add Transaction ===")
@@ -97,10 +97,8 @@ def update_transaction(transactions):
 
             print("Leave the description empty to keep the old value.")
 
-            description = input(
-                "New description: "
-            )
-
+            description = input(   "New description: " )
+              
             if description != "":
                 transaction["description"] = description
 
