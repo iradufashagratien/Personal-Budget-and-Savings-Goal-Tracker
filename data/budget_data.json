@@ -39,6 +39,14 @@
             "amount": 10000.0,
             "category": "Work",
             "date": "2026-04-02"
+        },
+        {
+            "id": 6,
+            "type": "income",
+            "description": "Test",
+            "amount": 2000.0,
+            "category": "Test",
+            "date": "2026-09-17"
         }
     ],
     "savings_goals": [
@@ -56,8 +64,8 @@
         },
         {
             "id": 3,
-            "name": "hello",
-            "target": 200.0,
+            "name": "A date",
+            "target": 2000000.0,
             "saved": 0
         }
     ]

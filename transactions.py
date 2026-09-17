@@ -33,11 +33,11 @@ def add_transaction(transactions):
 
     amount = get_valid_amount()
 
-    category = input("Enter category: ")
+    category = input("Enter category [Food, Entertainment, Work, Gifts, ...]: ")
 
     while category == "":
         print("Category cannot be empty.")
-        category = input("Enter category: ")
+        category = input("Enter category [Food, Entertainment, Work, Gifts, ...]: ")
 
     date = get_valid_date()
 
@@ -95,44 +95,27 @@ def update_transaction(transactions):
     for transaction in transactions:
         if transaction["id"] == transaction_id:
 
-            print("Leave the description empty to keep the old value.")
+            print("Leave description or category empty to keep the old value.")
 
-            description = input(   "New description: " )
-              
+            description = input("New description: ")
+
             if description != "":
                 transaction["description"] = description
 
-            amount = input("New amount: ")
-
-            if amount != "":
-                try:
-                    amount = float(amount)
-
-                    if amount > 0:
-                        transaction["amount"] = amount
-                    else:
-                        print("Amount must be greater than 0.")
-                        return
-
-                except ValueError:
-                    print("Invalid amount.")
-                    return
-
-            category = input("New category: ")
+            category = input("New category [Food, Entertainment, Work, Gifts, ...]: ")
 
             if category != "":
                 transaction["category"] = category
 
-            date = input("New date (YYYY-MM-DD): ")
+            print("Enter the new amount and date below.")
 
-            if date != "":
-                transaction["date"] = date
+            transaction["amount"] = get_valid_amount("New amount: ")
+            transaction["date"] = get_valid_date()
 
             print("Transaction updated successfully!.")
             return
 
     print("Transaction not found. Please enter the valid transaction ID")
-
 
 def delete_transaction(transactions):
     print("\n=== Delete Transaction ===")
@@ -232,7 +215,7 @@ def filter_transactions(transactions):
 
     elif choice == "2":
 
-        category = input("Enter category: ").lower()
+        category = input("Enter category [Food, Entertainment, Work, Gifts, ...]: ").lower()
 
         for transaction in transactions:
             if transaction["category"].lower() == category:

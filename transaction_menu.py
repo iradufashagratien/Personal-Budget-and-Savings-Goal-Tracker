@@ -1,4 +1,4 @@
-from data_store import load_data, save_data
+from data_store import save_data
 from transactions import (
     add_transaction,
     view_transactions,
@@ -9,8 +9,7 @@ from transactions import (
 )
 
 
-def transaction_menu(transactions):
-    data = load_data()
+def transaction_menu(data):
     transactions = data["transactions"]
 
     while True:
@@ -25,7 +24,7 @@ def transaction_menu(transactions):
         print("7. Save and Exit")
         print()
         print("============================================")
-        print()    
+        print()
         choice = input("Choose an option: ")
 
         if choice == "1":
@@ -47,7 +46,3 @@ def transaction_menu(transactions):
             break
         else:
             print("Invalid option. Please choose 1-7.")
-
-
-if __name__ == "__main__":
-    transaction_menu()

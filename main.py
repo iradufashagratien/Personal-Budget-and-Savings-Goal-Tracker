@@ -20,7 +20,7 @@ def main():
         choice = input("Choose an option: ").strip()
 
         if choice == "1":
-            transaction_menu.transaction_menu(data["transactions"])
+            transaction_menu.transaction_menu(data)
 
         elif choice == "2":
             savings_menu.savings_menu(data)
